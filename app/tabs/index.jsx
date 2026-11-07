@@ -5,7 +5,9 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>UniBites</Text>
-      <Text>University canteen menu</Text>
+      <Text style={styles.description}>
+  Find food available around campus.
+</Text>
     </View>
   );
 }
@@ -21,4 +23,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
   },
+  description: {
+  fontSize: 16,
+  color: '#666666',
+},
 });
