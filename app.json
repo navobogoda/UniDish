@@ -1,0 +1,3 @@
+{
+  "expo": { "name": "UniBites Offline", "slug": "unibites-offline", "version": "1.0.0", "orientation": "portrait", "scheme": "unibitesoffline", "userInterfaceStyle": "light", "plugins": ["expo-router"], "experiments": { "typedRoutes": true } }
+}
