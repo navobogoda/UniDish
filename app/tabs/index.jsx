@@ -8,6 +8,10 @@ export default function HomeScreen() {
       <Text style={styles.description}>
   Find food available around campus.
 </Text>
+<View style={styles.card}>
+  <Text style={styles.cardTitle}>Welcome to UniBites</Text>
+  <Text>Browse campus food between classes.</Text>
+</View>
     </View>
   );
 }
@@ -26,5 +30,17 @@ const styles = StyleSheet.create({
   description: {
   fontSize: 16,
   color: '#666666',
+},
+card: {
+  backgroundColor: '#1d6747',
+  padding: 18,
+  borderRadius: 12,
+  marginTop: 24,
+},
+cardTitle: {
+  color: '#ffffff',
+  fontSize: 20,
+  fontWeight: 'bold',
+  marginBottom: 8,
 },
 });
