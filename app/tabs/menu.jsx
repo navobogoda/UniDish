@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,TextInput } from 'react-native';
 
 export default function MenuScreen() {
   const foods = [
@@ -11,10 +11,14 @@ export default function MenuScreen() {
     
     <View style={styles.container}>
      <Text style={styles.title}>Campus Menu</Text>
+
      <Text style={styles.subtitle}>Food available around campus</Text>
-
+    
     <Text style={styles.count}>{foods.length} dishes available</Text>
-
+    <TextInput
+  style={styles.search}
+  placeholder="Search food or canteen"
+/>
      {foods.map((food) => (
   <View key={food.id} style={styles.foodCard}>
     <Text style={styles.foodName}>{food.name}</Text>
@@ -63,5 +67,13 @@ subtitle: {
 count: {
   color: '#666666',
   marginBottom: 12,
+},
+search: {
+  backgroundColor: '#ffffff',
+  borderWidth: 1,
+  borderColor: '#d8d2c8',
+  borderRadius: 10,
+  padding: 12,
+  marginBottom: 14,
 },
 });
