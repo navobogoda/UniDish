@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
 foodName: {
   fontSize: 18,
   fontWeight: 'bold',
+  color: '#1d6747',
 },
 foodDetails: {
   color: '#666666',
