@@ -1,12 +1,22 @@
-import React from 'react';
 import { StyleSheet, Text, View,TextInput } from 'react-native';
+import React, { useState } from 'react';
 
 export default function MenuScreen() {
+  const [searchText, setSearchText] = useState('');
   const foods = [
   { id: 'rice', name: 'Rice and Curry', canteen: 'Main Canteen', price: 450 },
   { id: 'chicken-kottu', name: 'Chicken Kottu', canteen: 'Main Canteen', price: 680 },
   { id: 'vegetable-kottu', name: 'Vegetable Kottu', canteen: 'Main Canteen', price: 520 },
 ];
+
+const filteredFoods = foods.filter((food) => {
+  const search = searchText.toLowerCase();
+
+  return (
+    food.name.toLowerCase().includes(search) ||
+    food.canteen.toLowerCase().includes(search)
+  );
+});
   return (
     
     <View style={styles.container}>
@@ -15,11 +25,13 @@ export default function MenuScreen() {
      <Text style={styles.subtitle}>Food available around campus</Text>
     
     <Text style={styles.count}>{foods.length} dishes available</Text>
-    <TextInput
-  style={styles.search}
-  placeholder="Search food or canteen"
+   <TextInput
+      style={styles.search}
+      placeholder="Search food or canteen"
+      value={searchText}
+      onChangeText={setSearchText}
 />
-     {foods.map((food) => (
+     {filteredFoods.map((food) => (
   <View key={food.id} style={styles.foodCard}>
     <Text style={styles.foodName}>{food.name}</Text>
     <Text style={styles.foodDetails}>
