@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   color: '#666666',
 },
 card: {
-  backgroundColor: '#1d6747',
+  backgroundColor: '#abd2f1',
   padding: 18,
   borderRadius: 12,
   marginTop: 24,
@@ -45,5 +45,16 @@ cardTitle: {
   fontSize: 20,
   fontWeight: 'bold',
   marginBottom: 8,
+},
+button: {
+  backgroundColor: '#69bedb',
+  padding: 10,
+  borderRadius: 8,
+  marginTop: 14,
+},
+buttonText: {
+  color: '#253326',
+  fontWeight: 'bold',
+  textAlign: 'center',
 },
 });
