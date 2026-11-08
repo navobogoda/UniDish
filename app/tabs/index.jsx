@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 export default function HomeScreen() {
   return (
@@ -11,6 +11,9 @@ export default function HomeScreen() {
 <View style={styles.card}>
   <Text style={styles.cardTitle}>Welcome to UniBites</Text>
   <Text>Browse campus food between classes.</Text>
+  <Pressable style={styles.button}>
+  <Text style={styles.buttonText}>Open the menu</Text>
+</Pressable>
 </View>
     </View>
   );
