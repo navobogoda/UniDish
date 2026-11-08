@@ -9,6 +9,10 @@ export default function MenuScreen() {
       <Text style={styles.foodName}>Rice and Curry</Text>
       <Text style={styles.foodDetails}>Main Canteen · Rs. 450</Text>
 </View>
+<View style={styles.foodCard}>
+  <Text style={styles.foodName}>Chicken Kottu</Text>
+  <Text style={styles.foodDetails}>Main Canteen · Rs. 680</Text>
+</View>
     </View>
   );
 }
