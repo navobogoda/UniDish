@@ -3,16 +3,26 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function MenuScreen() {
   return (
+    
     <View style={styles.container}>
-      <Text style={styles.title}>Campus Menu</Text>
+     <Text style={styles.title}>Campus Menu</Text>
+     <Text style={styles.subtitle}>Food available around campus</Text>
+
+      <View style={styles.foodCard}> 
+        <Text style={styles.foodName}>Rice and Curry</Text>
+        <Text style={styles.foodDetails}>Main Canteen · Rs. 450</Text>
+     </View>
+
       <View style={styles.foodCard}>
-      <Text style={styles.foodName}>Rice and Curry</Text>
-      <Text style={styles.foodDetails}>Main Canteen · Rs. 450</Text>
-</View>
-<View style={styles.foodCard}>
-  <Text style={styles.foodName}>Chicken Kottu</Text>
-  <Text style={styles.foodDetails}>Main Canteen · Rs. 680</Text>
-</View>
+        <Text style={styles.foodName}>Chicken Kottu</Text>
+        <Text style={styles.foodDetails}>Main Canteen · Rs. 680</Text>
+      </View>
+
+      <View style={styles.foodCard}>
+        <Text style={styles.foodName}>Vegetable Kottu</Text>
+        <Text style={styles.foodDetails}>Main Canteen · Rs. 520</Text>
+      </View>
+
     </View>
   );
 }
@@ -43,5 +53,10 @@ foodName: {
 foodDetails: {
   color: '#666666',
   marginTop: 6,
+},
+subtitle: {
+  color: '#666666',
+  fontSize: 16,
+  marginBottom: 12,
 },
 });
