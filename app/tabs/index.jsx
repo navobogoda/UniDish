@@ -1,7 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { useRouter } from 'expo-router';
 
 export default function HomeScreen() {
+  const router = useRouter();
+
+function openMenu() {
+  router.push('/tabs/menu');
+}
   return (
     <View style={styles.container}>
       <Text style={styles.title}>UniBites</Text>
@@ -11,7 +17,7 @@ export default function HomeScreen() {
 <View style={styles.card}>
   <Text style={styles.cardTitle}>Welcome to UniBites</Text>
   <Text>Browse campus food between classes.</Text>
-  <Pressable style={styles.button}>
+  <Pressable style={styles.button} onPress={openMenu}>
   <Text style={styles.buttonText}>Open the menu</Text>
 </Pressable>
 </View>
