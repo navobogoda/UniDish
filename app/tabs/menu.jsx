@@ -2,26 +2,27 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function MenuScreen() {
+  const foods = [
+  { id: 'rice', name: 'Rice and Curry', canteen: 'Main Canteen', price: 450 },
+  { id: 'chicken-kottu', name: 'Chicken Kottu', canteen: 'Main Canteen', price: 680 },
+  { id: 'vegetable-kottu', name: 'Vegetable Kottu', canteen: 'Main Canteen', price: 520 },
+];
   return (
     
     <View style={styles.container}>
      <Text style={styles.title}>Campus Menu</Text>
      <Text style={styles.subtitle}>Food available around campus</Text>
 
-      <View style={styles.foodCard}> 
-        <Text style={styles.foodName}>Rice and Curry</Text>
-        <Text style={styles.foodDetails}>Main Canteen · Rs. 450</Text>
-     </View>
+    <Text style={styles.count}>{foods.length} dishes available</Text>
 
-      <View style={styles.foodCard}>
-        <Text style={styles.foodName}>Chicken Kottu</Text>
-        <Text style={styles.foodDetails}>Main Canteen · Rs. 680</Text>
-      </View>
-
-      <View style={styles.foodCard}>
-        <Text style={styles.foodName}>Vegetable Kottu</Text>
-        <Text style={styles.foodDetails}>Main Canteen · Rs. 520</Text>
-      </View>
+     {foods.map((food) => (
+  <View key={food.id} style={styles.foodCard}>
+    <Text style={styles.foodName}>{food.name}</Text>
+    <Text style={styles.foodDetails}>
+      {food.canteen} · Rs. {food.price}
+    </Text>
+  </View>
+))}
 
     </View>
   );
@@ -57,6 +58,10 @@ foodDetails: {
 subtitle: {
   color: '#666666',
   fontSize: 16,
+  marginBottom: 12,
+},
+count: {
+  color: '#666666',
   marginBottom: 12,
 },
 });
