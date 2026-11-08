@@ -31,6 +31,11 @@ const filteredFoods = foods.filter((food) => {
       value={searchText}
       onChangeText={setSearchText}
 />
+
+{filteredFoods.length === 0 && (
+  <Text style={styles.emptyMessage}>No dishes found. Try another search.</Text>
+)}
+
      {filteredFoods.map((food) => (
   <View key={food.id} style={styles.foodCard}>
     <Text style={styles.foodName}>{food.name}</Text>
@@ -87,5 +92,10 @@ search: {
   borderRadius: 10,
   padding: 12,
   marginBottom: 14,
+},
+emptyMessage: {
+  color: '#666666',
+  marginTop: 12,
+  textAlign: 'center',
 },
 });
