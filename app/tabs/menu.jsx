@@ -32,6 +32,22 @@ export default function MenuScreen() {
     category: 'Meals',
     vegetarian: true,
  },
+ {
+  id: 'egg-roti',
+  name: 'Egg Roti',
+  canteen: 'Science Block Cafe',
+  price: 180,
+  category: 'Short Eats',
+  vegetarian: true,
+},
+{
+  id: 'fish-bun',
+  name: 'Fish Bun',
+  canteen: 'Science Block Cafe',
+  price: 160,
+  category: 'Short Eats',
+  vegetarian: false,
+},
 ];
 const filteredFoods = foods.filter((food) => {
   const search = searchText.toLowerCase();
@@ -68,8 +84,7 @@ return matchesSearch && matchesCategory && matchesVegetarian;
   <Text style={styles.emptyMessage}>No dishes found. Try another search.</Text>
 )}
 <View style={styles.categoryRow}>
-  {['All', 'Meals'].map((category) => (
-    <Pressable
+{['All', 'Meals', 'Short Eats'].map((category) => (    <Pressable
       key={category}
       onPress={() => setSelectedCategory(category)}
       style={[
