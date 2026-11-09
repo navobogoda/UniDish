@@ -96,6 +96,14 @@ export default function MenuScreen() {
   category: 'Desserts',
   vegetarian: true,
 },
+{
+  id: 'vegetable-roll',
+  name: 'Vegetable Roll',
+  canteen: 'Library Kiosk',
+  price: 140,
+  category: 'Short Eats',
+  vegetarian: true,
+},
 ];
 const filteredFoods = foods.filter((food) => {
   const search = searchText.toLowerCase();
