@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 export default function MenuScreen() {
   const [searchText, setSearchText] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [vegetarianOnly, setVegetarianOnly] = useState(false);
   const foods = [
+    
 
 {
   id: 'rice',
@@ -12,6 +14,7 @@ export default function MenuScreen() {
   canteen: 'Main Canteen',
   price: 450,
   category: 'Meals',
+  vegetarian: true,
 },
 
 { id: 'chicken-kottu',
@@ -19,6 +22,7 @@ export default function MenuScreen() {
   canteen: 'Main Canteen',
   price: 680,
   category: 'Meals',
+  vegetarian: false,
  },
 
   { id: 'vegetable-kottu', 
@@ -26,6 +30,7 @@ export default function MenuScreen() {
     canteen: 'Main Canteen', 
     price: 520,
     category: 'Meals',
+    vegetarian: true,
  },
 ];
 const filteredFoods = foods.filter((food) => {
@@ -35,10 +40,12 @@ const filteredFoods = foods.filter((food) => {
     food.name.toLowerCase().includes(search) ||
     food.canteen.toLowerCase().includes(search);
 
-  const matchesCategory =
-    selectedCategory === 'All' || food.category === selectedCategory;
+ const matchesCategory =
+  selectedCategory === 'All' || food.category === selectedCategory;
 
-  return matchesSearch && matchesCategory;
+const matchesVegetarian = !vegetarianOnly || food.vegetarian;
+
+return matchesSearch && matchesCategory && matchesVegetarian;
 });
   return (
     
@@ -74,6 +81,23 @@ const filteredFoods = foods.filter((food) => {
     </Pressable>
   ))}
 </View>
+
+<Pressable
+  onPress={() => setVegetarianOnly(!vegetarianOnly)}
+  style={[
+    styles.categoryButton,
+    vegetarianOnly && styles.selectedCategoryButton,
+  ]}
+>
+  <Text
+    style={[
+      styles.categoryText,
+      vegetarianOnly && styles.selectedCategoryText,
+    ]}
+  >
+    {vegetarianOnly ? '✓ Vegetarian only' : 'Show vegetarian only'}
+  </Text>
+</Pressable>
 
      {filteredFoods.map((food) => (
   <View key={food.id} style={styles.foodCard}>
@@ -157,5 +181,8 @@ selectedCategoryButton: {
 categoryText: {
   color: '#333333',
   fontWeight: 'bold',
+},
+selectedCategoryText: {
+  color: '#ffffff',
 },
 });
