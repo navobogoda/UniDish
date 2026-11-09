@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,TextInput,Pressable,ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { foods } from '../../data/foods';
+import FoodCard from '../../components/FoodCard';
 
 export default function MenuScreen() {
   const [searchText, setSearchText] = useState('');
@@ -72,13 +73,8 @@ return matchesSearch && matchesCategory && matchesVegetarian;
   </Text>
 </Pressable>
 
-     {filteredFoods.map((food) => (
-  <View key={food.id} style={styles.foodCard}>
-    <Text style={styles.foodName}>{food.name}</Text>
-    <Text style={styles.foodDetails}>
-      {food.canteen} · Rs. {food.price}
-    </Text>
-  </View>
+{filteredFoods.map((food) => (
+  <FoodCard key={food.id} food={food} />
 ))}
 
 </ScrollView>
