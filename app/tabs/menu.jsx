@@ -88,6 +88,14 @@ export default function MenuScreen() {
   category: 'Desserts',
   vegetarian: true,
 },
+{
+  id: 'yoghurt',
+  name: 'Set Yoghurt',
+  canteen: 'Main Canteen',
+  price: 130,
+  category: 'Desserts',
+  vegetarian: true,
+},
 ];
 const filteredFoods = foods.filter((food) => {
   const search = searchText.toLowerCase();
