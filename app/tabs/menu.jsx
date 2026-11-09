@@ -1,12 +1,32 @@
-import { StyleSheet, Text, View,TextInput } from 'react-native';
+import { StyleSheet, Text, View,TextInput,Pressable } from 'react-native';
 import React, { useState } from 'react';
 
 export default function MenuScreen() {
   const [searchText, setSearchText] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const foods = [
-  { id: 'rice', name: 'Rice and Curry', canteen: 'Main Canteen', price: 450 },
-  { id: 'chicken-kottu', name: 'Chicken Kottu', canteen: 'Main Canteen', price: 680 },
-  { id: 'vegetable-kottu', name: 'Vegetable Kottu', canteen: 'Main Canteen', price: 520 },
+
+{
+  id: 'rice',
+  name: 'Rice and Curry',
+  canteen: 'Main Canteen',
+  price: 450,
+  category: 'Meals',
+},
+
+{ id: 'chicken-kottu',
+  name: 'Chicken Kottu',
+  canteen: 'Main Canteen',
+  price: 680,
+  category: 'Meals',
+ },
+
+  { id: 'vegetable-kottu', 
+    name: 'Vegetable Kottu',
+    canteen: 'Main Canteen', 
+    price: 520,
+    category: 'Meals',
+ },
 ];
 
 const filteredFoods = foods.filter((food) => {
@@ -30,11 +50,27 @@ const filteredFoods = foods.filter((food) => {
       placeholder="Search food or canteen"
       value={searchText}
       onChangeText={setSearchText}
+
+      
 />
 
 {filteredFoods.length === 0 && (
   <Text style={styles.emptyMessage}>No dishes found. Try another search.</Text>
 )}
+<View style={styles.categoryRow}>
+  {['All', 'Meals'].map((category) => (
+    <Pressable
+      key={category}
+      onPress={() => setSelectedCategory(category)}
+      style={[
+        styles.categoryButton,
+        selectedCategory === category && styles.selectedCategoryButton,
+      ]}
+    >
+      <Text style={styles.categoryText}>{category}</Text>
+    </Pressable>
+  ))}
+</View>
 
      {filteredFoods.map((food) => (
   <View key={food.id} style={styles.foodCard}>
