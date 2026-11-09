@@ -1,110 +1,12 @@
 import { StyleSheet, Text, View,TextInput,Pressable } from 'react-native';
 import React, { useState } from 'react';
+import { foods } from '../../data/foods';
 
 export default function MenuScreen() {
   const [searchText, setSearchText] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [vegetarianOnly, setVegetarianOnly] = useState(false);
-  const foods = [
-    
-
-{
-  id: 'rice',
-  name: 'Rice and Curry',
-  canteen: 'Main Canteen',
-  price: 450,
-  category: 'Meals',
-  vegetarian: true,
-},
-
-{ id: 'chicken-kottu',
-  name: 'Chicken Kottu',
-  canteen: 'Main Canteen',
-  price: 680,
-  category: 'Meals',
-  vegetarian: false,
- },
-
-  { id: 'vegetable-kottu', 
-    name: 'Vegetable Kottu',
-    canteen: 'Main Canteen', 
-    price: 520,
-    category: 'Meals',
-    vegetarian: true,
- },
- {
-  id: 'egg-roti',
-  name: 'Egg Roti',
-  canteen: 'Science Block Cafe',
-  price: 180,
-  category: 'Short Eats',
-  vegetarian: true,
-},
-{
-  id: 'fish-bun',
-  name: 'Fish Bun',
-  canteen: 'Science Block Cafe',
-  price: 160,
-  category: 'Short Eats',
-  vegetarian: false,
-},
-{
-  id: 'cheese-sandwich',
-  name: 'Cheese Sandwich',
-  canteen: 'Library Kiosk',
-  price: 260,
-  category: 'Snacks',
-  vegetarian: true,
-},
-{
-  id: 'fruit-cup',
-  name: 'Seasonal Fruit Cup',
-  canteen: 'Library Kiosk',
-  price: 220,
-  category: 'Snacks',
-  vegetarian: true,
-},
-{
-  id: 'tea',
-  name: 'Milk Tea',
-  canteen: 'Main Canteen',
-  price: 100,
-  category: 'Drinks',
-  vegetarian: true,
-},
-{
-  id: 'lime-juice',
-  name: 'Fresh Lime Juice',
-  canteen: 'Science Block Cafe',
-  price: 180,
-  category: 'Drinks',
-  vegetarian: true,
-},
-{
-  id: 'chocolate-cake',
-  name: 'Chocolate Cake',
-  canteen: 'Library Kiosk',
-  price: 240,
-  category: 'Desserts',
-  vegetarian: true,
-},
-{
-  id: 'yoghurt',
-  name: 'Set Yoghurt',
-  canteen: 'Main Canteen',
-  price: 130,
-  category: 'Desserts',
-  vegetarian: true,
-},
-{
-  id: 'vegetable-roll',
-  name: 'Vegetable Roll',
-  canteen: 'Library Kiosk',
-  price: 140,
-  category: 'Short Eats',
-  vegetarian: true,
-},
-];
+  
 const filteredFoods = foods.filter((food) => {
   const search = searchText.toLowerCase();
 
