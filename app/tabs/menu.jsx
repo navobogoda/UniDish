@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TextInput,Pressable } from 'react-native';
+import { StyleSheet, Text, View,TextInput,Pressable,ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { foods } from '../../data/foods';
 
@@ -23,8 +23,8 @@ return matchesSearch && matchesCategory && matchesVegetarian;
 });
   return (
     
-    <View style={styles.container}>
-     <Text style={styles.title}>Campus Menu</Text>
+<ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
+       <Text style={styles.title}>Campus Menu</Text>
 
      <Text style={styles.subtitle}>Food available around campus</Text>
     
@@ -81,17 +81,19 @@ return matchesSearch && matchesCategory && matchesVegetarian;
   </View>
 ))}
 
-    </View>
+</ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    justifyContent: 'center',
     backgroundColor: '#fbf8f2',
   },
+  scrollContent: {
+  padding: 20,
+  paddingBottom: 34,
+},
   title: {
     fontSize: 26,
     fontWeight: 'bold',
