@@ -28,14 +28,17 @@ export default function MenuScreen() {
     category: 'Meals',
  },
 ];
-
 const filteredFoods = foods.filter((food) => {
   const search = searchText.toLowerCase();
 
-  return (
+  const matchesSearch =
     food.name.toLowerCase().includes(search) ||
-    food.canteen.toLowerCase().includes(search)
-  );
+    food.canteen.toLowerCase().includes(search);
+
+  const matchesCategory =
+    selectedCategory === 'All' || food.category === selectedCategory;
+
+  return matchesSearch && matchesCategory;
 });
   return (
     
@@ -133,5 +136,26 @@ emptyMessage: {
   color: '#666666',
   marginTop: 12,
   textAlign: 'center',
+},
+categoryRow: {
+  flexDirection: 'row',
+  marginBottom: 14,
+},
+categoryButton: {
+  paddingVertical: 8,
+  paddingHorizontal: 14,
+  marginRight: 8,
+  borderRadius: 20,
+  backgroundColor: '#ffffff',
+  borderWidth: 1,
+  borderColor: '#d8d2c8',
+},
+selectedCategoryButton: {
+  backgroundColor: '#1d6747',
+  borderColor: '#1d6747',
+},
+categoryText: {
+  color: '#333333',
+  fontWeight: 'bold',
 },
 });
