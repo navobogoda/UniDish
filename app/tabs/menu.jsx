@@ -48,6 +48,14 @@ export default function MenuScreen() {
   category: 'Short Eats',
   vegetarian: false,
 },
+{
+  id: 'cheese-sandwich',
+  name: 'Cheese Sandwich',
+  canteen: 'Library Kiosk',
+  price: 260,
+  category: 'Snacks',
+  vegetarian: true,
+},
 ];
 const filteredFoods = foods.filter((food) => {
   const search = searchText.toLowerCase();
@@ -84,7 +92,8 @@ return matchesSearch && matchesCategory && matchesVegetarian;
   <Text style={styles.emptyMessage}>No dishes found. Try another search.</Text>
 )}
 <View style={styles.categoryRow}>
-{['All', 'Meals', 'Short Eats'].map((category) => (    <Pressable
+{['All', 'Meals', 'Short Eats', 'Snacks'].map((category) => (
+     <Pressable
       key={category}
       onPress={() => setSelectedCategory(category)}
       style={[
