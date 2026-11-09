@@ -72,6 +72,14 @@ export default function MenuScreen() {
   category: 'Drinks',
   vegetarian: true,
 },
+{
+  id: 'lime-juice',
+  name: 'Fresh Lime Juice',
+  canteen: 'Science Block Cafe',
+  price: 180,
+  category: 'Drinks',
+  vegetarian: true,
+},
 ];
 const filteredFoods = foods.filter((food) => {
   const search = searchText.toLowerCase();
