@@ -7,11 +7,11 @@ import { useStore } from '../../context/StoreContext';
 export default function FoodDetailsScreen() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
-  const { savedIds, toggleSaved } = useStore();
+  const { savedIds, toggleSaved ,addToCart} = useStore();
 
   const food = foods.find((item) => item.id === id);
 
-  return (
+  return ( 
     <ScrollView contentContainerStyle={styles.container}>
       <Pressable onPress={() => router.back()} style={styles.backButton}>
         <Text style={styles.backText}>← Back to menu</Text>
@@ -50,7 +50,15 @@ export default function FoodDetailsScreen() {
           {savedIds.includes(food.id) ? 'Remove from saved' : 'Save this dish'}
         </Text>
       </Pressable>
-        </View>
+
+          <Pressable
+      style={styles.cartButton}
+      onPress={() => addToCart(food.id)}
+    >
+      <Text style={styles.cartButtonText}>Add to cart</Text>
+    </Pressable>
+    
+        </View> 
       ) : (
         <Text>Food not found.</Text>
       )}
@@ -112,6 +120,17 @@ saveButton: {
 },
 saveButtonText: {
   color: '#ffffff',
+  fontWeight: 'bold',
+},
+cartButton: {
+  backgroundColor: '#f2b34d',
+  padding: 12,
+  borderRadius: 10,
+  marginTop: 10,
+  alignItems: 'center',
+},
+cartButtonText: {
+  color: '#253326',
   fontWeight: 'bold',
 },
 });
