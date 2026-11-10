@@ -4,6 +4,7 @@ const StoreContext = createContext(null);
 
 export function StoreProvider({ children }) {
   const [savedIds, setSavedIds] = useState([]);
+  const [cart, setCart] = useState({});
 
   function toggleSaved(id) {
     setSavedIds((currentIds) => {
@@ -14,10 +15,34 @@ export function StoreProvider({ children }) {
       return [...currentIds, id];
     });
   }
+  function addToCart(id) {
+  setCart((currentCart) => ({
+    ...currentCart,
+    [id]: (currentCart[id] || 0) + 1,
+  }));
+}
 
+function removeFromCart(id) {
+  setCart((currentCart) => {
+    const nextCart = { ...currentCart };
+
+    if (!nextCart[id]) {
+      return nextCart;
+    }
+
+    if (nextCart[id] === 1) {
+      delete nextCart[id];
+    } else {
+      nextCart[id] -= 1;
+    }
+
+    return nextCart;
+  });
+}
   return (
-    <StoreContext.Provider value={{ savedIds, toggleSaved }}>
-      {children}
+<StoreContext.Provider
+  value={{ savedIds, toggleSaved, cart, addToCart, removeFromCart }}
+>      {children}
     </StoreContext.Provider>
   );
 }
