@@ -26,6 +26,8 @@ ingredients: ['Godamba roti', 'Chicken', 'Vegetables', 'Egg'],
     price: 520,
     category: 'Meals',
     vegetarian: true,
+    description: 'A spicy vegetable version of a popular canteen meal.',
+ingredients: ['Godamba roti', 'Cabbage', 'Carrot', 'Leek'],
  },
  {
   id: 'egg-roti',
