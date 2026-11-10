@@ -1,6 +1,11 @@
 import React from 'react';
 import { Stack } from 'expo-router';
+import { StoreProvider } from '../context/StoreContext';
 
 export default function RootLayout() {
-  return <Stack screenOptions={{ headerShown: false }} />;
+return (
+  <StoreProvider>
+    <Stack screenOptions={{ headerShown: false }} />
+  </StoreProvider>
+);
 }
