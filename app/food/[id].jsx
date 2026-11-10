@@ -2,10 +2,12 @@ import React from 'react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { foods } from '../../data/foods';
+import { useStore } from '../../context/StoreContext';
 
 export default function FoodDetailsScreen() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
+  const { savedIds, toggleSaved } = useStore();
 
   const food = foods.find((item) => item.id === id);
 
@@ -32,12 +34,22 @@ export default function FoodDetailsScreen() {
           </Text>
         ))}
       </View>
-    )}          <Text style={styles.detail}>Canteen: {food.canteen}</Text>
+    )} 
+          <Text style={styles.detail}>Canteen: {food.canteen}</Text>
           <Text style={styles.detail}>Category: {food.category}</Text>
           <Text style={styles.price}>Rs. {food.price}</Text>
           <Text style={styles.detail}>
             {food.vegetarian ? 'Vegetarian' : 'Not vegetarian'}
           </Text>
+
+        <Pressable
+        style={styles.saveButton}
+        onPress={() => toggleSaved(food.id)}
+       >
+        <Text style={styles.saveButtonText}>
+          {savedIds.includes(food.id) ? 'Remove from saved' : 'Save this dish'}
+        </Text>
+      </Pressable>
         </View>
       ) : (
         <Text>Food not found.</Text>
@@ -90,5 +102,16 @@ const styles = StyleSheet.create({
   fontSize: 18,
   fontWeight: 'bold',
   marginTop: 20,
+},
+saveButton: {
+  backgroundColor: '#1d6747',
+  padding: 12,
+  borderRadius: 10,
+  marginTop: 20,
+  alignItems: 'center',
+},
+saveButtonText: {
+  color: '#ffffff',
+  fontWeight: 'bold',
 },
 });
