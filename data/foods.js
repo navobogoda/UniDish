@@ -96,6 +96,8 @@ ingredients: ['Lime', 'Water', 'Sugar'],
   price: 240,
   category: 'Desserts',
   vegetarian: true,
+  description: 'A soft slice of chocolate cake for an afternoon treat.',
+ingredients: ['Flour', 'Cocoa', 'Egg', 'Milk'],
 },
 {
   id: 'yoghurt',
