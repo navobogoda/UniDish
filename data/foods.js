@@ -66,6 +66,8 @@ ingredients: ['Bread', 'Cheese', 'Tomato', 'Lettuce'],
   price: 220,
   category: 'Snacks',
   vegetarian: true,
+  description: 'A refreshing cup of locally available seasonal fruit.',
+ingredients: ['Seasonal fruit'],
 },
 {
   id: 'tea',
