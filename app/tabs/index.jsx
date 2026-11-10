@@ -1,3 +1,5 @@
+import FoodCard from '../../components/FoodCard';
+import { foods } from '../../data/foods';
 import React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
@@ -8,7 +10,7 @@ export default function HomeScreen() {
 function openMenu() {
   router.push('/tabs/menu');
 }
-  return (
+  return (  
     <View style={styles.container}>
       <Text style={styles.title}>UniBites</Text>
       <Text style={styles.description}>
@@ -21,6 +23,12 @@ function openMenu() {
   <Text style={styles.buttonText}>Open the menu</Text>
 </Pressable>
 </View>
+<Text style={styles.sectionTitle}>Popular dishes</Text>
+
+{foods.slice(0, 3).map((food) => (
+  <FoodCard key={food.id} food={food} />
+))}
+
     </View>
   );
 }
@@ -62,5 +70,12 @@ buttonText: {
   color: '#253326',
   fontWeight: 'bold',
   textAlign: 'center',
+},
+sectionTitle: {
+  color: '#24221e',
+  fontSize: 20,
+  fontWeight: 'bold',
+  marginTop: 24,
+  marginBottom: 12,
 },
 });
