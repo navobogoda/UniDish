@@ -56,6 +56,8 @@ ingredients: ['Bread', 'Fish', 'Potato', 'Spices'],
   price: 260,
   category: 'Snacks',
   vegetarian: true,
+  description: 'Toasted bread with cheese and fresh vegetables.',
+ingredients: ['Bread', 'Cheese', 'Tomato', 'Lettuce'],
 },
 {
   id: 'fruit-cup',
