@@ -1,15 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import { StyleSheet, Text, Pressable } from 'react-native';
 
 export default function FoodCard({ food }) {
+  const router = useRouter();
   return (
-    <View style={styles.card}>
-      <Text style={styles.name}>{food.name}</Text>
-      <Text style={styles.details}>
+<Pressable
+  style={styles.card}
+  onPress={() => router.push(`/food/${food.id}`)}
+>    
+  <Text style={styles.name}>{food.name}</Text>
+  <Text style={styles.details}>
         {food.canteen} · Rs. {food.price}
-      </Text>
-    </View>
-  );
+  </Text>
+</Pressable>  );
 }
 
 const styles = StyleSheet.create({

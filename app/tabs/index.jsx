@@ -1,7 +1,7 @@
 import FoodCard from '../../components/FoodCard';
 import { foods } from '../../data/foods';
 import React from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable ,ScrollView} from 'react-native';
 import { useRouter } from 'expo-router';
 
 export default function HomeScreen() {
@@ -11,8 +11,7 @@ function openMenu() {
   router.push('/tabs/menu');
 }
   return (  
-    <View style={styles.container}>
-      <Text style={styles.title}>UniBites</Text>
+<ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>      <Text style={styles.title}>UniBites</Text>
       <Text style={styles.description}>
   Find food available around campus.
 </Text>
@@ -29,7 +28,7 @@ function openMenu() {
   <FoodCard key={food.id} food={food} />
 ))}
 
-    </View>
+</ScrollView>
   );
 }
 
@@ -37,7 +36,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    justifyContent: 'center',
   },
   title: {
     fontSize: 28,
@@ -77,5 +75,9 @@ sectionTitle: {
   fontWeight: 'bold',
   marginTop: 24,
   marginBottom: 12,
+},
+scrollContent: {
+  padding: 20,
+  paddingBottom: 34,
 },
 });
