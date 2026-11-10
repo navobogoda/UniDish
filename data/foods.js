@@ -46,6 +46,8 @@ ingredients: ['Flour', 'Egg', 'Onion', 'Chilli'],
   price: 160,
   category: 'Short Eats',
   vegetarian: false,
+  description: 'A soft bun with a mildly spiced fish filling.',
+ingredients: ['Bread', 'Fish', 'Potato', 'Spices'],
 },
 {
   id: 'cheese-sandwich',
