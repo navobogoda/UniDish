@@ -1,10 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
+import { foods } from '../data/foods';
 
 const StoreContext = createContext(null);
 
 export function StoreProvider({ children }) {
   const [savedIds, setSavedIds] = useState([]);
   const [cart, setCart] = useState({});
+  const [orders, setOrders] = useState([]);
+
 
   function toggleSaved(id) {
     setSavedIds((currentIds) => {
@@ -39,9 +42,35 @@ function removeFromCart(id) {
     return nextCart;
   });
 }
+function placeOrder() {
+  const items = Object.entries(cart).map(([foodId, quantity]) => ({
+    foodId,
+    quantity,
+  }));
+
+  if (items.length === 0) {
+    return;
+  }
+
+  const total = items.reduce((sum, item) => {
+    const food = foods.find((dish) => dish.id === item.foodId);
+    return sum + (food ? food.price * item.quantity : 0);
+  }, 0);
+
+  const newOrder = {
+    id: `UB-${Date.now().toString().slice(-6)}`,
+    createdAt: new Date().toISOString(),
+    items,
+    total,
+    status: 'Saved on this device',
+  };
+
+  setOrders((currentOrders) => [newOrder, ...currentOrders]);
+  setCart({});
+}
   return (
 <StoreContext.Provider
-  value={{ savedIds, toggleSaved, cart, addToCart, removeFromCart }}
+  value={{ savedIds, toggleSaved, cart, addToCart, removeFromCart, orders, placeOrder  }}
 >      {children}
     </StoreContext.Provider>
   );
