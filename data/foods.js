@@ -16,6 +16,8 @@ ingredients: ['Rice', 'Dhal', 'Seasonal vegetables'],
   price: 680,
   category: 'Meals',
   vegetarian: false,
+  description: 'Chopped flatbread stir-fried with chicken, vegetables and spices.',
+ingredients: ['Godamba roti', 'Chicken', 'Vegetables', 'Egg'],
  },
 
   { id: 'vegetable-kottu', 
