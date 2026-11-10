@@ -36,6 +36,8 @@ ingredients: ['Godamba roti', 'Cabbage', 'Carrot', 'Leek'],
   price: 180,
   category: 'Short Eats',
   vegetarian: true,
+  description: 'Flaky roti filled with a seasoned egg mixture.',
+ingredients: ['Flour', 'Egg', 'Onion', 'Chilli'],
 },
 {
   id: 'fish-bun',
