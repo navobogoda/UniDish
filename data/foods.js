@@ -116,5 +116,7 @@ ingredients: ['Milk', 'Yoghurt culture'],
   price: 140,
   category: 'Short Eats',
   vegetarian: true,
+  description: 'A crisp roll filled with a savoury vegetable mixture.',
+ingredients: ['Potato', 'Carrot', 'Crumbs', 'Spices'],
 },
 ];
