@@ -6,6 +6,8 @@ export const foods = [
   price: 450,
   category: 'Meals',
   vegetarian: true,
+  description: 'Rice served with dhal and seasonal vegetable curries.',
+ingredients: ['Rice', 'Dhal', 'Seasonal vegetables'],
 },
 
 { id: 'chicken-kottu',

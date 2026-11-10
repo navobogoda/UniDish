@@ -18,8 +18,21 @@ export default function FoodDetailsScreen() {
       {food ? (
         <View style={styles.card}>
           <Text style={styles.emoji}>🍽️</Text>
-          <Text style={styles.name}>{food.name}</Text>
-          <Text style={styles.detail}>Canteen: {food.canteen}</Text>
+              <Text style={styles.name}>{food.name}</Text>
+    {food.description ? (
+      <Text style={styles.detail}>{food.description}</Text>
+    ) : null}
+
+    {food.ingredients?.length > 0 && (
+      <View>
+        <Text style={styles.sectionTitle}>Ingredients</Text>
+        {food.ingredients.map((ingredient, index) => (
+          <Text key={index} style={styles.detail}>
+            • {ingredient}
+          </Text>
+        ))}
+      </View>
+    )}          <Text style={styles.detail}>Canteen: {food.canteen}</Text>
           <Text style={styles.detail}>Category: {food.category}</Text>
           <Text style={styles.price}>Rs. {food.price}</Text>
           <Text style={styles.detail}>
@@ -72,4 +85,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 16,
   },
+  sectionTitle: {
+  color: '#24221e',
+  fontSize: 18,
+  fontWeight: 'bold',
+  marginTop: 20,
+},
 });
