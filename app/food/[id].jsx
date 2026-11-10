@@ -57,7 +57,7 @@ export default function FoodDetailsScreen() {
     >
       <Text style={styles.cartButtonText}>Add to cart</Text>
     </Pressable>
-    
+
         </View> 
       ) : (
         <Text>Food not found.</Text>

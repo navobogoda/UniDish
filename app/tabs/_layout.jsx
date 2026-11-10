@@ -16,6 +16,10 @@ export default function TabLayout() {
         name="saved"
         options={{ title: 'Saved' }}
       />
+      <Tabs.Screen
+      name="cart"
+      options={{ title: 'කරත්තය' }}
+    />
     </Tabs>
   );
 }
