@@ -106,6 +106,8 @@ ingredients: ['Flour', 'Cocoa', 'Egg', 'Milk'],
   price: 130,
   category: 'Desserts',
   vegetarian: true,
+  description: 'Creamy set yoghurt, served plain.',
+ingredients: ['Milk', 'Yoghurt culture'],
 },
 {
   id: 'vegetable-roll',
