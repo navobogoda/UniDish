@@ -12,6 +12,10 @@ export default function TabLayout() {
         name="menu"
         options={{ title: 'Menu' }}
       />
+      <Tabs.Screen
+        name="saved"
+        options={{ title: 'Saved' }}
+      />
     </Tabs>
   );
 }
