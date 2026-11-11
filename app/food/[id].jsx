@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, Alert } from 'react-native';
 import { foods } from '../../data/foods';
 import { useStore } from '../../context/StoreContext';
 
@@ -53,8 +54,10 @@ export default function FoodDetailsScreen() {
 
           <Pressable
       style={styles.cartButton}
-      onPress={() => addToCart(food.id)}
-    >
+      onPress={() => {
+        addToCart(food.id);
+        Alert.alert('Added to cart', `${food.name} was added to your cart.`);
+      }}    >
       <Text style={styles.cartButtonText}>Add to cart</Text>
     </Pressable>
 
