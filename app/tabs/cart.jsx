@@ -2,9 +2,11 @@ import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { foods } from '../../data/foods';
 import { useStore } from '../../context/StoreContext';
+import { useRouter } from 'expo-router';
 
 export default function CartScreen() {
   const { cart, addToCart, removeFromCart } = useStore();
+  const router = useRouter();
 
   const cartItems = foods.filter((food) => cart[food.id] > 0);
 
@@ -15,10 +17,10 @@ export default function CartScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>ඔබේ කරත්තය</Text>
+      <Text style={styles.title}>Your Cart</Text>
 
       {cartItems.length === 0 ? (
-        <Text style={styles.message}>ඔබේ කරත්තය හිස්.</Text>
+        <Text style={styles.message}>Your cart is empty.</Text>
       ) : (
         <>
           {cartItems.map((food) => (
@@ -48,7 +50,13 @@ export default function CartScreen() {
             </View>
           ))}
 
-          <Text style={styles.total}>මුළු මුදල: රු. {total}</Text>
+          <Text style={styles.total}>Full price: Rs: {total}</Text>
+          <Pressable
+              style={styles.checkoutButton}
+              onPress={() => router.push('/checkout')}
+           >
+              <Text style={styles.checkoutButtonText}>Review order</Text>
+          </Pressable>
         </>
       )}
     </ScrollView>
@@ -119,4 +127,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 8,
   },
+  checkoutButton: {
+  backgroundColor: '#1d6747',
+  padding: 14,
+  borderRadius: 10,
+  alignItems: 'center',
+  marginTop: 16,
+},
+checkoutButtonText: {
+  color: '#ffffff',
+  fontWeight: 'bold',
+},
 });
