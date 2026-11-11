@@ -27,7 +27,7 @@ export default function CartScreen() {
             <View key={food.id} style={styles.item}>
               <Text style={styles.name}>{food.name}</Text>
               <Text style={styles.details}>
-                රු. {food.price} × {cart[food.id]}
+                Rs {food.price} × {cart[food.id]}
               </Text>
 
               <View style={styles.controls}>

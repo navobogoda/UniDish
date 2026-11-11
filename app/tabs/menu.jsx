@@ -29,7 +29,11 @@ return matchesSearch && matchesCategory && matchesVegetarian;
 
      <Text style={styles.subtitle}>Food available around campus</Text>
     
-    <Text style={styles.count}>{foods.length} dishes available</Text>
+      <Text style={styles.count}>
+        {filteredFoods.length}{' '}
+        {filteredFoods.length === 1 ? 'dish' : 'dishes'} available
+      </Text>
+      
    <TextInput
       style={styles.search}
       placeholder="Search food or canteen"
