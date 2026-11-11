@@ -27,7 +27,12 @@ function openMenu() {
 {foods.slice(0, 3).map((food) => (
   <FoodCard key={food.id} food={food} />
 ))}
-
+<Pressable
+  style={styles.button}
+  onPress={() => router.push('/about')}
+>
+  <Text style={styles.buttonText}>About this project</Text>
+</Pressable>
 </ScrollView>
   );
 }
