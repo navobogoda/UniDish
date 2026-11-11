@@ -1,12 +1,57 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { foods } from '../data/foods';
 
+
+const CART_KEY = '@unibites/cart-v1';
+const SAVED_KEY = '@unibites/saved-v1';
+const ORDERS_KEY = '@unibites/orders-v1';
 const StoreContext = createContext(null);
 
 export function StoreProvider({ children }) {
   const [savedIds, setSavedIds] = useState([]);
   const [cart, setCart] = useState({});
   const [orders, setOrders] = useState([]);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+  async function loadData() {
+    try {
+      const [savedCart, savedItems, savedOrders] = await Promise.all([
+        AsyncStorage.getItem(CART_KEY),
+        AsyncStorage.getItem(SAVED_KEY),
+        AsyncStorage.getItem(ORDERS_KEY),
+      ]);
+
+      if (savedCart) setCart(JSON.parse(savedCart));
+      if (savedItems) setSavedIds(JSON.parse(savedItems));
+      if (savedOrders) setOrders(JSON.parse(savedOrders));
+    } catch (error) {
+      console.warn('Could not load saved app data', error);
+    } finally {
+      setReady(true);
+    }
+  }
+
+  loadData();
+}, []);
+
+useEffect(() => {
+  if (!ready) return;
+
+  Promise.all([
+    AsyncStorage.setItem(CART_KEY, JSON.stringify(cart)),
+    AsyncStorage.setItem(SAVED_KEY, JSON.stringify(savedIds)),
+    AsyncStorage.setItem(ORDERS_KEY, JSON.stringify(orders)),
+  ]).catch((error) => {
+    console.warn('Could not save app data', error);
+  });
+}, [cart, savedIds, orders, ready]);
 
 
   function toggleSaved(id) {
