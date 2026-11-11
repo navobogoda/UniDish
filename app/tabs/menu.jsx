@@ -33,7 +33,7 @@ return matchesSearch && matchesCategory && matchesVegetarian;
         {filteredFoods.length}{' '}
         {filteredFoods.length === 1 ? 'dish' : 'dishes'} available
       </Text>
-      
+
    <TextInput
       style={styles.search}
       placeholder="Search food or canteen"
@@ -46,7 +46,12 @@ return matchesSearch && matchesCategory && matchesVegetarian;
 {filteredFoods.length === 0 && (
   <Text style={styles.emptyMessage}>No dishes found. Try another search.</Text>
 )}
-<View style={styles.categoryRow}>
+<ScrollView
+  horizontal
+  showsHorizontalScrollIndicator={false}
+  style={styles.categoryScroll}
+  contentContainerStyle={styles.categoryRow}
+>
 {['All', 'Meals', 'Short Eats', 'Snacks', 'Drinks','Desserts'].map((category) => (     <Pressable
       key={category}
       onPress={() => setSelectedCategory(category)}
@@ -58,7 +63,7 @@ return matchesSearch && matchesCategory && matchesVegetarian;
       <Text style={styles.categoryText}>{category}</Text>
     </Pressable>
   ))}
-</View>
+</ScrollView>
 
 <Pressable
   onPress={() => setVegetarianOnly(!vegetarianOnly)}
@@ -159,5 +164,11 @@ categoryText: {
 },
 selectedCategoryText: {
   color: '#ffffff',
+},
+categoryScroll: {
+  marginBottom: 14,
+},
+categoryRow: {
+  flexDirection: 'row',
 },
 });
