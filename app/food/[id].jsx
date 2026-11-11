@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Pressable, ScrollView, StyleSheet, Text, View, Alert } from 'react-native';
 import { foods } from '../../data/foods';
 import { useStore } from '../../context/StoreContext';
 
+
 export default function FoodDetailsScreen() {
   const { id } = useLocalSearchParams();
+  const [cartMessage, setCartMessage] = useState('');
   const router = useRouter();
   const { savedIds, toggleSaved ,addToCart} = useStore();
 
@@ -54,13 +55,15 @@ export default function FoodDetailsScreen() {
 
           <Pressable
       style={styles.cartButton}
-      onPress={() => {
+          onPress={() => {
         addToCart(food.id);
-        Alert.alert('Added to cart', `${food.name} was added to your cart.`);
+        setCartMessage(`${food.name} added to your cart.`);
       }}    >
       <Text style={styles.cartButtonText}>Add to cart</Text>
     </Pressable>
-
+      {cartMessage ? (
+   <Text style={styles.cartMessage}>{cartMessage}</Text>
+    ) : null}
         </View> 
       ) : (
         <Text>Food not found.</Text>
@@ -134,6 +137,11 @@ cartButton: {
 },
 cartButtonText: {
   color: '#253326',
+  fontWeight: 'bold',
+},
+cartMessage: {
+  color: '#1d6747',
+  marginTop: 12,
   fontWeight: 'bold',
 },
 });
