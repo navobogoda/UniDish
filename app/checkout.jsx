@@ -1,11 +1,12 @@
-import React from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, Text } from 'react-native';
+import React, { useState } from 'react';
+import {  Pressable, ScrollView, StyleSheet, Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import { foods } from '../data/foods';
 import { useStore } from '../context/StoreContext';
 
 export default function CheckoutScreen() {
   const router = useRouter();
+  const [orderMessage, setOrderMessage] = useState('');
   const { cart, placeOrder } = useStore();
 
   const items = foods.filter((food) => cart[food.id] > 0);
@@ -21,11 +22,9 @@ export default function CheckoutScreen() {
 
     placeOrder();
 
-    Alert.alert(
-      'Order saved',
-      'This demo order is saved on this device. It is not sent to a canteen.',
-      [{ text: 'OK', onPress: () => router.replace('/tabs/cart') }]
-    );
+   setOrderMessage(
+  'Order saved on this device. It was not sent to a canteen.'
+);
   }
 
   return (
@@ -50,6 +49,18 @@ export default function CheckoutScreen() {
       >
         <Text style={styles.buttonText}>Save demo order on this device</Text>
       </Pressable>
+      {orderMessage ? (
+  <>
+    <Text style={styles.successMessage}>{orderMessage}</Text>
+
+    <Pressable
+      style={styles.ordersButton}
+      onPress={() => router.push('/tabs/orders')}
+    >
+      <Text style={styles.ordersButtonText}>View order history</Text>
+    </Pressable>
+  </>
+) : null}
     </ScrollView>
   );
 }
@@ -100,4 +111,20 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontWeight: 'bold',
   },
+  successMessage: {
+  color: '#1d6747',
+  marginTop: 16,
+  lineHeight: 22,
+},
+ordersButton: {
+  backgroundColor: '#e4f1e8',
+  padding: 12,
+  borderRadius: 10,
+  alignItems: 'center',
+  marginTop: 12,
+},
+ordersButtonText: {
+  color: '#1d6747',
+  fontWeight: 'bold',
+},
 });
