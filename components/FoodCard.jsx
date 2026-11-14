@@ -17,7 +17,8 @@ const foodEmojis = {
 
 export default function FoodCard({ food }) {
   const router = useRouter();
-  const { addToCart } = useStore();
+const { cart, addToCart } = useStore();
+const quantityInCart = cart[food.id] || 0;
 
   return (
     <View style={styles.card}>
@@ -45,7 +46,13 @@ export default function FoodCard({ food }) {
           style={styles.addButton}
           onPress={() => addToCart(food.id)}
         >
-          <Text style={styles.addButtonText}>Add to cart</Text>
+        <Text style={styles.addButtonText}>
+          {quantityInCart > 0
+            ? `Add more · ${quantityInCart} in cart`
+            : 'Add to cart'
+            }
+        </Text>     
+        
         </Pressable>
       </View>
     </View>
@@ -107,11 +114,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   addButton: {
-    backgroundColor: '#1d6747',
-    paddingVertical: 11,
-    paddingHorizontal: 16,
-    borderRadius: 10,
-  },
+  backgroundColor: '#1d6747',
+  paddingVertical: 11,
+  paddingHorizontal: 16,
+  borderRadius: 10,
+  borderWidth: 2,
+  borderColor: '#24221e',
+},
   addButtonText: {
     color: '#ffffff',
     fontWeight: 'bold',

@@ -39,12 +39,11 @@ function openMenu() {
 {foods.slice(0, 3).map((food) => (
   <FoodCard key={food.id} food={food} />
 ))}
-<Pressable
-  style={styles.button}
-  onPress={() => router.push('/about')}
->
-  <Text style={styles.buttonText}>About this project</Text>
-</Pressable>
+<View style={styles.footer}>
+  <Pressable onPress={() => router.push('/about')}>
+    <Text style={styles.footerText}>About this project →</Text>
+  </Pressable>
+</View>
 </ScrollView>
   );
 }
@@ -139,6 +138,16 @@ menuButton: {
 },
 menuButtonText: {
   color: '#253326',
+  fontWeight: 'bold',
+},
+footer: {
+  alignItems: 'center',
+  paddingVertical: 30,
+  marginTop: 20,
+},
+footerText: {
+  color: '#1d6747',
+  fontSize: 16,
   fontWeight: 'bold',
 },
 });
