@@ -11,18 +11,30 @@ function openMenu() {
   router.push('/tabs/menu');
 }
   return (  
-<ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>      <Text style={styles.title}>UniBites</Text>
+<ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}> 
+
+      <Text style={styles.eyebrow}>UNIBITES · CAMPUS CANTEEN</Text>
+      <Text style={styles.title}>Good food. Between classes.</Text>
       <Text style={styles.description}>
-  Find food available around campus.
-</Text>
-<View style={styles.card}>
-  <Text style={styles.cardTitle}>Welcome to UniBites</Text>
-  <Text>Browse campus food between classes.</Text>
-  <Pressable style={styles.button} onPress={openMenu}>
-  <Text style={styles.buttonText}>Open the menu</Text>
-</Pressable>
+           A little taste of campus, always close by.
+      </Text>
+
+<View style={styles.banner}>
+  <Text style={styles.bannerEyebrow}>TODAY ON CAMPUS</Text>
+  <Text style={styles.bannerTitle}>
+    Fresh picks for your study break
+  </Text>
+  <Text style={styles.bannerDescription}>
+    Browse the menu and save your favourites. Everything works offline.
+  </Text>
+
+  <Pressable style={styles.menuButton} onPress={openMenu}>
+    <Text style={styles.menuButtonText}>Explore the menu →</Text>
+  </Pressable>
 </View>
-<Text style={styles.sectionTitle}>Popular dishes</Text>
+
+
+<Text style={styles.sectionTitle}>Student favourites</Text>
 
 {foods.slice(0, 3).map((food) => (
   <FoodCard key={food.id} food={food} />
@@ -84,5 +96,49 @@ sectionTitle: {
 scrollContent: {
   padding: 20,
   paddingBottom: 34,
+},
+eyebrow: {
+  color: '#1d6747',
+  fontSize: 13,
+  fontWeight: 'bold',
+  letterSpacing: 1.5,
+  marginBottom: 14,
+},
+banner: {
+  backgroundColor: '#1d6747',
+  padding: 20,
+  borderRadius: 22,
+  marginTop: 24,
+  marginBottom: 24,
+},
+bannerEyebrow: {
+  color: '#cfe8d3',
+  fontSize: 12,
+  fontWeight: 'bold',
+  letterSpacing: 1.2,
+  marginBottom: 12,
+},
+bannerTitle: {
+  color: '#ffffff',
+  fontSize: 23,
+  fontWeight: 'bold',
+  marginBottom: 8,
+},
+bannerDescription: {
+  color: '#e3eee5',
+  fontSize: 16,
+  lineHeight: 22,
+},
+menuButton: {
+  backgroundColor: '#f2b34d',
+  alignSelf: 'flex-start',
+  paddingVertical: 12,
+  paddingHorizontal: 16,
+  borderRadius: 12,
+  marginTop: 16,
+},
+menuButtonText: {
+  color: '#253326',
+  fontWeight: 'bold',
 },
 });
