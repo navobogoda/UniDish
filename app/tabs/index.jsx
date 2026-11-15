@@ -1,7 +1,7 @@
 import FoodCard from '../../components/FoodCard';
 import { foods } from '../../data/foods';
 import React from 'react';
-import { StyleSheet, Text, View, Pressable ,ScrollView} from 'react-native';
+import { StyleSheet, Text, View, Pressable ,ScrollView,  ImageBackground} from 'react-native';
 import { useRouter } from 'expo-router';
 
 export default function HomeScreen() {
@@ -18,20 +18,27 @@ function openMenu() {
       <Text style={styles.description}>
            A little taste of campus, always close by.
       </Text>
+<ImageBackground
+  source={require('../../assets/canteen-banner.jpg')}
+  style={styles.banner}
+  imageStyle={styles.bannerImage}
+>
+  <View style={styles.bannerOverlay}>
+    <Text style={styles.bannerEyebrow}>TODAY ON CAMPUS</Text>
 
-<View style={styles.banner}>
-  <Text style={styles.bannerEyebrow}>TODAY ON CAMPUS</Text>
-  <Text style={styles.bannerTitle}>
-    Fresh picks for your study break
-  </Text>
-  <Text style={styles.bannerDescription}>
-    Browse the menu and save your favourites. Everything works offline.
-  </Text>
+    <Text style={styles.bannerTitle}>
+      Fresh picks for your study break
+    </Text>
 
-  <Pressable style={styles.menuButton} onPress={openMenu}>
-    <Text style={styles.menuButtonText}>Explore the menu →</Text>
-  </Pressable>
-</View>
+    <Text style={styles.bannerDescription}>
+      Browse the menu and save your favourites. Everything works offline.
+    </Text>
+
+    <Pressable style={styles.menuButton} onPress={openMenu}>
+      <Text style={styles.menuButtonText}>Explore the menu →</Text>
+    </Pressable>
+  </View>
+</ImageBackground>
 
 
 <Text style={styles.sectionTitle}>Student favourites</Text>
@@ -149,5 +156,22 @@ footerText: {
   color: '#1d6747',
   fontSize: 16,
   fontWeight: 'bold',
+},
+banner: {
+  minHeight: 300,
+  borderRadius: 22,
+  overflow: 'hidden',
+  marginTop: 24,
+  marginBottom: 24,
+},
+bannerImage: {
+  borderRadius: 22,
+},
+bannerOverlay: {
+  flex: 1,
+  minHeight: 300,
+  justifyContent: 'center',
+  padding: 20,
+  backgroundColor: 'rgba(20, 12, 25, 0.62)',
 },
 });
