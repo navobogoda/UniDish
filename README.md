@@ -1,6 +1,8 @@
-# UniBites Offline
+# UniBite - University Canteen App
 
-An Expo React Native starter for a university canteen menu ICA. The sample app has Home, Menu, Saved, Cart, Order History, Food Details, Checkout, and About screens. Menu data is bundled in `data/foods.ts`; cart, saved items, and demo order history persist on the device with AsyncStorage. It has no backend, public API, sign-in service, remote image, or payment integration.
+## Project Overview
+
+UniBite is a React Native application for browsing food available at a university canteen. Students can search and filter the menu, view dish details, save favourites, add dishes to a cart, and review demo orders. The menu data and saved app information are stored locally so the app can be used offline.
 
 ## Run it
 
