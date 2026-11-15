@@ -1,36 +1,94 @@
-# UniBite - University Canteen App
+<div align="center">
 
-## Project Overview
+# 🍽️ UniBite
 
-UniBite is a React Native application for browsing food available at a university canteen. Students can search and filter the menu, view dish details, save favourites, add dishes to a cart, and review demo orders. The menu data and saved app information are stored locally so the app can be used offline.
+### University Canteen Food App
 
-## Run it
+Browse campus food, save favourites, and manage a demo order — even offline.
 
-Install Node.js LTS, then open a terminal in this folder and run:
+</div>
 
-```bash
-npm install
-npx expo start
-```
+---
 
-Install Expo Go on an Android phone and scan the development QR code, or press `a` if an Android emulator is installed. For web preview, run `npm run web`.
+## 📖 Table of Contents
 
-## Where to start editing
+- [Project Overview](#-project-overview)
+- [Objective](#-objective)
+- [Key Features](#-key-features)
+- [Application Screenshots](#-application-screenshots)
+- [Technologies Used](#-technologies-used)
+- [Project Structure](#-project-structure)
+- [Installation and Setup](#-installation-and-setup)
+- [Offline and Data Storage](#-offline-and-data-storage)
+- [Important Notes](#-important-notes)
 
-- `data/foods.ts`: the sample local menu. Replace it with information you personally collected and prepared. Keep each `id` unique.
-- `app/(tabs)/menu.tsx`: local search, food category filter, and vegetarian filter.
-- `app/food/[id].tsx`: dynamic details screen, ingredients, save, and add-to-cart actions.
-- `context/StoreContext.tsx`: local cart, favourites, local demo orders, and AsyncStorage persistence.
-- `app/(tabs)/_layout.tsx`: bottom-tab navigation.
+## 📌 Project Overview
 
-The included dishes and prices are illustrative sample content, not verified prices for a real university. Confirm your own dataset with your lecturer and use your own observations and any required attribution. Personalize the screens and be prepared to explain the code as your individual work. An offline demo checkout only saves an example order on this device; it does not send an order to a canteen.
+UniBite is a React Native application for browsing food available at a university canteen. Students can search and filter dishes, view food details, save favourites, add items to a cart, and review demo orders.
 
-## ICA coverage in this starter
+The menu is stored locally in the application. Saved dishes, cart items, and demo orders are stored on the device.
 
-- Expo React Native app with multiple navigable screens.
-- Local, bundled sample food dataset displayed dynamically.
-- Search, category and vegetarian filters, food details, favourites and cart.
-- AsyncStorage persistence for the cart, saved dishes and demo orders.
-- All app content and imagery are local (food emoji); no internet service is called by the app.
+## 🎯 Objective
 
-Before submission, replace the sample dataset with your own, add your student-specific project details if required, create your own GitHub repository, and commit your development work regularly.
+The objective of UniBite is to provide students with a simple way to explore campus canteen food and manage a sample order from a mobile application.
+
+## ✨ Key Features
+
+- Browse food items from the local menu.
+- Search by food name or canteen.
+- Filter dishes by category.
+- Show vegetarian dishes only.
+- View food descriptions, ingredients, prices, and canteen details.
+- Save and remove favourite dishes.
+- Add food to the cart and change item quantities.
+- Review a demo order and see order history.
+- Use the application without public APIs or an online database.
+
+## 📱 Application Screenshots
+
+Add your own screenshots to the `screenshots` folder in the project root.
+
+| Home | Menu |
+|---|---|
+| ![UniBite Home screen](screenshots/home.png) | ![UniBite Menu screen](screenshots/menu.png) |
+
+| Food Details | Cart |
+|---|---|
+| ![UniBite Food Details screen](screenshots/food-details.png) | ![UniBite Cart screen](screenshots/cart.png) |
+
+## 🧰 Technologies Used
+
+- **React Native** — mobile application interface
+- **Expo** — development and application tooling
+- **JavaScript and JSX** — application code
+- **Expo Router** — screen routing and navigation
+- **AsyncStorage** — local storage for saved dishes, cart items, and demo orders
+- **React Native Web** — browser preview
+
+## 🗂️ Project Structure
+
+```text
+UniBite/
+├── app/
+│   ├── _layout.jsx
+│   ├── index.jsx
+│   ├── about.jsx
+│   ├── checkout.jsx
+│   ├── food/
+│   │   └── [id].jsx
+│   └── tabs/
+│       ├── _layout.jsx
+│       ├── index.jsx
+│       ├── menu.jsx
+│       ├── saved.jsx
+│       ├── cart.jsx
+│       └── orders.jsx
+├── components/
+│   └── FoodCard.jsx
+├── context/
+│   └── StoreContext.jsx
+├── data/
+│   └── foods.js
+├── screenshots/
+├── package.json
+└── README.md
